@@ -3,11 +3,13 @@
 int main (int argc, char *argv[])
 {
   wiringPiSetup () ;
-  pinMode (3, INPUT) ;
-  pullUpDnControl(3, PUD_UP) ;
+  pinMode (4, INPUT) ;
+  pinMode(3, OUTPUT); 
+ pullUpDnControl(4, PUD_UP) ;
   for (;;)
   {
-    int x = digitalRead(3);
+    int x = digitalRead(4);
+    if(x == 0){digitalWrite(3, HIGH); delay(500); digitalWrite(3,LOW);}
     printf("Got a %d\n",x);
   }
   return 0 ;
